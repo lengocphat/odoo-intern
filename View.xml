@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.ui.view" id="ql_detai_w">
+            <field name="name">ql_detai_search_view</field>
+            <field name="model">ql.detai</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ten"/>
+                    <field name="sotiet"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ql_detai_form_view">
+            <field name="name">ql_detai_form_view</field>
+            <field name="model">ql.detai</field>
+            <field name="arch" type="xml">
+                <form string="Quan ly de tai Form">
+                    <sheet>
+                        <group colspan="4">
+                            <group colspan="2" col="2">
+                                <separator string="Tên môn học" colspan="2"/>
+                                <field name="ten"/>
+                            </group>
+
+                            <group colspan="2" col="2">
+                                <separator string="Thời gian" colspan="2"/>
+                                <field name="ngaybatdau"/>
+                                <field name="ngayketthuc"/>
+                            </group>
+
+                            <notebook colspan="4">
+                                <page string="Ghi chú">
+                                    <field name="ghichu" nolabel="1"/>
+                                </page>
+                                <page string="Số tiết">
+                                    <field name="sotiet"/>
+                                </page>
+                                <page string="Thầy">
+                                    <field name="nhanvien" >
+                                        <tree>
+                                            <field name="name_related"/>
+                                            <field name="work_phone"/>
+                                            <field name="work_email"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="ql_detai_input_tree">
+            <field name="name">ql_detai_input_tree</field>
+            <field name="model">ql.detai</field>
+            <field name="arch" type="xml">
+                <tree string="Quan ly de tai inputs" >
+                    <field name="ten"/>
+                    <field name="sotiet"/>
+                    <field name="songuoi"/>
+                    <field name="ghichu"/>
+                    <field name="ngaybatdau"/>
+                    <field name="ngayketthuc"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ql_detai_list_action">
+            <field name="name">QL_DeTai</field>
+            <field name="res_model">ql.detai</field>
+            <field name="view_id" ref="ql_detai_input_tree"></field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first course
+                </p>
+            </field>
+        </record>
+        <!-- top level menu: no parent -->
+        <menuitem id="main_ql_detai_menu" name="QL De Tai"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="ql_detai_menu" name="QL De Tai"
+                  parent="main_ql_detai_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent openacademy_menu and *after* its
+             action course_list_action -->
+        <menuitem id="detai_menu" name="QL_DeTai" parent="ql_detai_menu"
+                  action="ql_detai_list_action"/>
+        <!-- Full id location:
+             action="openacademy.course_list_action"
+             It is not required when it is the same module -->
+    </data>
+</openerp>
