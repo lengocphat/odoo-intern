@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="sinh_vien_form" model="ir.ui.view">
+            <field name="name">sinh.vien.form</field>
+            <field name="model">sinhvien</field>
+            <field name="arch" type="xml">
+                <form string="Sinh viên">
+                    <group>
+                        <field name="name"/>
+                        <field name="ngaysinh"/>
+                        <field name="gioitinh"/>
+                        <field name="diachi"/>
+                        <field name="sotinchinomon"/>
+                        <field name="m2m" widget="many2many_checkboxes"/>
+                        <field name="tugas" widget="many2many_binary"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="sinh_vien_tree" model="ir.ui.view">
+            <field name="name">sinh.vien.tree</field>
+            <field name="model">sinhvien</field>
+            <field name="arch" type="xml">
+                <tree srting="Danh sách sinh viên">
+                        <field name="name"/>
+                        <field name="ngaysinh"/>
+                        <field name="m2m"/>
+                </tree>
+            </field>
+        </record>
+        <record id="sinh_vien_action" model="ir.actions.act_window">
+            <field name="name">Danh sách sinh viên</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sinhvien</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="view_id" res="sinh_vien_form"/>-->
+            <!--<field name="target">new</field>-->
+        </record>
+    </data>
+</openerp>

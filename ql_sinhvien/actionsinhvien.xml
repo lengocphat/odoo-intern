@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="mon_hoc_form" model="ir.ui.view">
+            <field name="name">mon.hoc.form</field>
+            <field name="model">monhoc</field>
+            <field name="arch" type="xml">
+                <form string="Mon Hoc">
+                    <group>
+                        <field name="id"/>
+                        <field name="tenmh"/>
+                        <field name="mamh"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="mon_hoc_tree" model="ir.ui.view">
+            <field name="name">mon.hoc.tree</field>
+            <field name="model">monhoc</field>
+            <field name="arch" type="xml">
+                <tree srting="Danh sách môn học">
+                        <field name="tenmh"/>
+                        <field name="sotinchi"/>
+                        <field name="mamh"/>
+                </tree>
+            </field>
+        </record>
+        <record id="mon_hoc_action" model="ir.actions.act_window">
+            <field name="name">Danh sách môn học mã môn học</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">monhoc</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="danh_sach_mh_mamh" parent="mon_hoc" action="mon_hoc_action" ></menuitem>
+    </data>
+</openerp>

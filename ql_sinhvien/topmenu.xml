@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <menuitem id="sinh_vien" name="Sinh vien"></menuitem>
+        <menuitem id="quan_ly_sv" name="Quản lý sinh viên" parent="sinh_vien"></menuitem>
+        <menuitem id="mon_hoc" name="Quản lý môn học" parent="sinh_vien"></menuitem>
+        <menuitem id="danh_sach_sv" parent="quan_ly_sv" action="sinh_vien_action" ></menuitem>
+    </data>
+</openerp>
